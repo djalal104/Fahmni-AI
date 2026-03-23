@@ -1,0 +1,23 @@
+# FastAPI and server
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9   # Required for file uploads
+
+# PDF processing
+PyMuPDF==1.24.1
+
+# Embeddings
+sentence-transformers==2.7.0
+
+# Vector database
+faiss-cpu==1.8.0
+
+# LLM client (OpenAI-compatible, works for OpenRouter too)
+openai==1.30.1
+
+# Environment variables
+python-dotenv==1.0.1
+
+# Utilities
+numpy==1.26.4
+pydantic==2.7.1

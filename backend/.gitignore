@@ -1,0 +1,14 @@
+# Environment variables - NEVER commit this
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# FAISS index (rebuilds automatically)
+*.index
+*.faiss
