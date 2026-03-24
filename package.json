@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "katex": "^0.16.40",
+    "react-katex": "^3.1.0"
+  }
+}
