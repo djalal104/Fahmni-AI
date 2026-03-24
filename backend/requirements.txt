@@ -1,7 +1,7 @@
 fastapi==0.109.0
 uvicorn[standard]==0.27.0
 python-multipart==0.0.9
-PyMuPDF==1.23.8
+PyMuPDF==1.24.5
 sentence-transformers==2.7.0
 faiss-cpu==1.13.2
 openai==1.30.1
