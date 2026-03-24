@@ -10,7 +10,7 @@ PyMuPDF==1.24.1
 sentence-transformers==2.7.0
 
 # Vector database
-faiss-cpu==1.8.0
+faiss-cpu==1.13.2
 
 # LLM client (OpenAI-compatible, works for OpenRouter too)
 openai==1.30.1
