@@ -2,29 +2,33 @@
 embeddings.py
 -------------
 Handles converting text into numerical vectors (embeddings).
-
 RAG Pipeline Step 3: Text → Embeddings
 """
-
 from sentence_transformers import SentenceTransformer
 import numpy as np
 
 MODEL_NAME = "all-MiniLM-L6-v2"
-model = SentenceTransformer(MODEL_NAME)
+model = None  # ← lazy load: don't load at import time
+
+
+def get_model():
+    """Load the model only when first needed — avoids Render startup timeout."""
+    global model
+    if model is None:
+        model = SentenceTransformer(MODEL_NAME)
+    return model
 
 
 def embed_texts(chunks: list[dict]) -> np.ndarray:
     """
     Converts chunk dicts into embedding vectors (uses only the "text" field).
-
     Args:
         chunks: [{"text": "...", "page": int}, ...]
-
     Returns:
         2D numpy array of shape (len(chunks), 384), float32.
     """
     texts = [c["text"] for c in chunks]
-    embeddings = model.encode(
+    embeddings = get_model().encode(
         texts,
         convert_to_numpy=True,
         show_progress_bar=False,
@@ -35,7 +39,7 @@ def embed_texts(chunks: list[dict]) -> np.ndarray:
 
 def embed_query(query: str) -> np.ndarray:
     """Single query → shape (1, 384)."""
-    embedding = model.encode(
+    embedding = get_model().encode(
         [query],
         convert_to_numpy=True,
         normalize_embeddings=True,
